@@ -32,6 +32,7 @@
 #pragma config PMDL1WAY = OFF // allow multiple reconfigurations
 #pragma config IOL1WAY = OFF // allow multiple reconfigurations
 
+
 int main() {
 
     __builtin_disable_interrupts(); // disable interrupts while initializing things
@@ -66,22 +67,23 @@ int main() {
         
         if (PORTBbits.RB4 == 0){ //if the B4 button is pressed, then we we will blink A4.
             
-            _CP0_SET_COUNT(0);  //if the button is pressed we reset the core timer
+
+            _CP0_SET_COUNT(0);
             ctime = _CP0_GET_COUNT();   //This will get the current count -- the core time is 32-bit timer.
             
-            while (ctime != 36000001){
+            while (ctime != 36000001 ){
                 
                 ctime = _CP0_GET_COUNT();   //This will get the current count -- the core time is 32-bit timer.
                 if (ctime < 12000000){
                     LATAbits.LATA4 = 1; //Turn the A4 bit on 
                 }
-                else if (ctime == 12000000){
+                else if (ctime > 12000000 && ctime < 24000000){
                     LATAbits.LATA4 = 0;     //Turn the A4 bit off. 
                 }
-                else if (ctime == 24000000){    
+                else if (ctime > 24000000 && ctime < 36000000){    
                     LATAbits.LATA4 = 1;     //Turn the A4 bit on 
-                }
-                else if (ctime == 36000000){
+                }  
+                else if (ctime > 36000000){
                     LATAbits.LATA4 = 0;
                 }
             }
