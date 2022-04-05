@@ -74,18 +74,31 @@ int main() {
             while (ctime != 36000001 ){
                 
                 ctime = _CP0_GET_COUNT();   //This will get the current count -- the core time is 32-bit timer.
+                
                 if (ctime < 12000000){
                     LATAbits.LATA4 = 1; //Turn the A4 bit on 
                 }
-                else if (ctime > 12000000 && ctime < 24000000){
+                else if (ctime >= 12000000 && ctime < 24000000){
                     LATAbits.LATA4 = 0;     //Turn the A4 bit off. 
                 }
-                else if (ctime > 24000000 && ctime < 36000000){    
+                else if (ctime >= 24000000 && ctime < 36000000){    
                     LATAbits.LATA4 = 1;     //Turn the A4 bit on 
                 }  
-                else if (ctime > 36000000){
+                else if (ctime >= 36000000){
                     LATAbits.LATA4 = 0;
                 }
+//                if (ctime == 0) { 
+//                    LATAbits.LATA4 = 1; 
+//                }
+//                else if (ctime == 11999999){ 
+//                    LATAbits.LATA4 = 0; 
+//                }
+//                else if (ctime == 23999999){ 
+//                    LATAbits.LATA4 = 1; 
+//                }
+//                else if (ctime == 35999999){ 
+//                    LATAbits.LATA4 = 0; 
+//                }
             }
         }
 
