@@ -16,10 +16,9 @@ int main() {
         if (PORTBbits.RB4 == 0){ //if the B4 button is pressed, then we we will blink A4.
             char msg[100];
             blink();
-            talk();
-//            //Here we will also write something to the computer to show that TX and RX are working. 
-//            sprintf(msg,"Helllo!");
-//            PIC32_WriteUART1(msg);
+            //Here we will also write something to the computer to show that TX and RX are working. 
+            sprintf(msg,"Helllo!");
+            PIC32_WriteUART1(msg);
         }
     }
 }
@@ -59,8 +58,7 @@ void talk(void){
     static int count = 1; 
     char msg[BUFFER_SIZE];
     
-    sprintf(msg, "Blinked! %d\r\n", count);
+    sprintf(msg, "Blinked! %d", count);
     
     PIC32_WriteUART1(msg); 
-    count++; 
 }

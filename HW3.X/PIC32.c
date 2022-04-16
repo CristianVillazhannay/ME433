@@ -67,9 +67,9 @@ void PIC32_Startup() {
   //Turning "off" the LATA4 register. 
   LATAbits.LATA4 = 0;
 
-  //Here we want to assign pin function to the B14 and the B15 pin. 
-  RPB15Rbits.RPB15R = 0b0001;     //Here we assign the TX pin to the output pin. [pin 26]
-  U1RXRbits.U1RXR = 0b0011;       //Here we assign the RX pin to the B13 pin [pin 24]
+  //Here we want to assign pin function to the B13 and the B15 pin. 
+  RPB7Rbits.RPB7R = 0b0001;     //Here we assign the TX pin to the output pin. [pin 26]
+  U1RXRbits.U1RXR = 0b0001;       //Here we assign the RX pin to the B13 pin [pin 24]
 
 
   // turn on UART1 without an interrupt
@@ -83,7 +83,10 @@ void PIC32_Startup() {
   // configure TX & RX pins as output & input pins
   U1STAbits.UTXEN = 1;
   U1STAbits.URXEN = 1;
-
+  
+  ANSELA = 0; 
+  ANSELB = 0; 
+  
   // enable the uart
   U1MODEbits.ON = 1;
 
