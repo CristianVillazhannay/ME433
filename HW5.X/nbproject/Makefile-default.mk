@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=spi.c
+SOURCEFILES_QUOTED_IF_SPACED=spi.c main.c pic32.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/spi.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/spi.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/spi.o ${OBJECTDIR}/main.o ${OBJECTDIR}/pic32.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/spi.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/pic32.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/spi.o
+OBJECTFILES=${OBJECTDIR}/spi.o ${OBJECTDIR}/main.o ${OBJECTDIR}/pic32.o
 
 # Source Files
-SOURCEFILES=spi.c
+SOURCEFILES=spi.c main.c pic32.c
 
 
 
@@ -113,12 +113,36 @@ ${OBJECTDIR}/spi.o: spi.c  .generated_files/flags/default/2f91dece0ccdca680d3b4c
 	@${RM} ${OBJECTDIR}/spi.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/spi.o.d" -o ${OBJECTDIR}/spi.o spi.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
+${OBJECTDIR}/main.o: main.c  .generated_files/flags/default/4e5e26d1350cbb3c9a8e6097bb8e35209b32a8ff .generated_files/flags/default/15078ce8f5a6ad03035624f12995f439edad8cad
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/main.o.d 
+	@${RM} ${OBJECTDIR}/main.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/main.o.d" -o ${OBJECTDIR}/main.o main.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/pic32.o: pic32.c  .generated_files/flags/default/90f1579fcf46778aad4d83706f529b130289f12b .generated_files/flags/default/15078ce8f5a6ad03035624f12995f439edad8cad
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/pic32.o.d 
+	@${RM} ${OBJECTDIR}/pic32.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/pic32.o.d" -o ${OBJECTDIR}/pic32.o pic32.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
 else
 ${OBJECTDIR}/spi.o: spi.c  .generated_files/flags/default/3bad5bbdeb8567fda6925af5164aea5ddb45dff6 .generated_files/flags/default/15078ce8f5a6ad03035624f12995f439edad8cad
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/spi.o.d 
 	@${RM} ${OBJECTDIR}/spi.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/spi.o.d" -o ${OBJECTDIR}/spi.o spi.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/main.o: main.c  .generated_files/flags/default/b51cf2646d8829a7d849b09f12a2e56d0e86db93 .generated_files/flags/default/15078ce8f5a6ad03035624f12995f439edad8cad
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/main.o.d 
+	@${RM} ${OBJECTDIR}/main.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/main.o.d" -o ${OBJECTDIR}/main.o main.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/pic32.o: pic32.c  .generated_files/flags/default/ce22d4972864d224e8c4277ddbadac574f8fc6f9 .generated_files/flags/default/15078ce8f5a6ad03035624f12995f439edad8cad
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/pic32.o.d 
+	@${RM} ${OBJECTDIR}/pic32.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/pic32.o.d" -o ${OBJECTDIR}/pic32.o pic32.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 endif
 

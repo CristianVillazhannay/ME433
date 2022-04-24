@@ -1,13 +1,18 @@
 // initialize SPI1
+#include <xc.h>
+#include<sys/attribs.h>  // __ISR macro
+
+
 void initSPI() {
 
     // Pin B14 has to be SCK1
     // Turn off all analog pins
     ANSELA = 0; 
     // Make an output pin for CS
-    //We want the A1 pin to be an output. Initialize the pin high.  
-    TRISAbits.TRISA1 = 0; 
-    LATAbits.LATA1 = 1; 
+    //We want the A0 pin to be an output. Initialize the pin high.  
+    TRISAbits.TRISA0 = 0; 
+    LATAbits.LATA0 = 1; 
+    
     // Set SDO1
     //Checking output pin selection. Making pin RPB5 SD01
     RPB5Rbits.RPB5R = 0b0011; 
