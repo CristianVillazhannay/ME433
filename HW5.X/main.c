@@ -1,40 +1,63 @@
 #include "PIC32.h"
 #include "spi.h"
 #include<stdio.h>        // standard input output library.
+#include <math.h>
 
 #define BUFFER_SIZE 100
 
 void blink(void);
 void talk(void);
+int trivolt(int time);
+int sinevolt(int time);
 
 int main() {
 
     PIC32_Startup();
     initSPI();
     
-    unsigned char i = 0; 
-
     while (1) {     //The loop will run infinitely
-        
 
+        unsigned short bytes; 
+        float fluff;
         
-        LATAbits.LATA0 = 0; //Bring CS low. 
-        spi_io(i);
-        LATAbits.LATA0 = 1; 
+        //creating the triangle wave.
+        for (int i = 0; i<256; i++){
+            bytes = make16(0,i);
+            LATAbits.LATA0 = 0; //Bring CS low. 
+            spi_io(bytes>>8);
+            spi_io(bytes&0xff);
+            LATAbits.LATA0 = 1; //Bring CS high.
             
-        i++;
-        if (i==100){
-            i=0;
+
+            fluff = (float)i/(float)255 *(float)2*M_PI;
+            fluff = sin(fluff) * 255/2 + 255/2;
+        
+            bytes = make16(1,fluff);
+            LATAbits.LATA0 = 0; //Bring CS low. 
+            spi_io(bytes>>8);
+            spi_io(bytes&0xff);
+            LATAbits.LATA0 = 1; //Bring CS high.
+            _CP0_SET_COUNT(0);
+            while (_CP0_GET_COUNT()<15000){}
+            
         }
+        for (int j = 255; j > -1; j = j-1){
+            bytes = make16(0,j);
+            LATAbits.LATA0 = 0; //Bring CS low. 
+            spi_io(bytes>>8);
+            spi_io(bytes&0xff);
+            LATAbits.LATA0 = 1; //Bring CS high.
+            
+            fluff = (float)j/(float)255 *(float)2* M_PI;
+            fluff = -sin(fluff) * 255/2 + 255/2;
         
-        _CP0_SET_COUNT(0);
-        while(_CP0_GET_COUNT() < 48000000/2){}
-        
-        
-        if (PORTBbits.RB4 == 0){ //if the B4 button is pressed, then we we will blink A4.
-            char msg[100];
-            blink();    //This will tell us if the pic is working. 
-                  
+            bytes = make16(1,fluff);
+            LATAbits.LATA0 = 0; //Bring CS low. 
+            spi_io(bytes>>8);
+            spi_io(bytes&0xff);
+            LATAbits.LATA0 = 1; //Bring CS high.
+            _CP0_SET_COUNT(0);
+            while (_CP0_GET_COUNT()<15000){}
         }
     }
 }

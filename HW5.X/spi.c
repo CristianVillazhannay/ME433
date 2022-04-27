@@ -38,3 +38,18 @@ unsigned char spi_io(unsigned char o) {
   }
   return SPI1BUF;
 }
+
+
+unsigned short make16(char AB, unsigned short voltage){
+    unsigned short s = 0; 
+
+    s = 0b0; 
+    //moving the AB char to the beginning of the line. 
+    s = s|AB << 15;
+    //Adding the three constant bits. 
+    s = s| (0b111 << 12); 
+    //Adding the voltage needed.
+    s = s|(voltage << 4);
+
+    return s; 
+}
