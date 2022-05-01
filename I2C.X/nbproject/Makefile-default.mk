@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=pic32.h i2c_master_noint.h i2c_master_noint.c pic32.c main.c
+SOURCEFILES_QUOTED_IF_SPACED=pic32.c main.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/pic32.o ${OBJECTDIR}/i2c_master_noint.o ${OBJECTDIR}/i2c_master_noint.o ${OBJECTDIR}/pic32.o ${OBJECTDIR}/main.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/pic32.o.d ${OBJECTDIR}/i2c_master_noint.o.d ${OBJECTDIR}/i2c_master_noint.o.d ${OBJECTDIR}/pic32.o.d ${OBJECTDIR}/main.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/pic32.o ${OBJECTDIR}/main.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/pic32.o.d ${OBJECTDIR}/main.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/pic32.o ${OBJECTDIR}/i2c_master_noint.o ${OBJECTDIR}/i2c_master_noint.o ${OBJECTDIR}/pic32.o ${OBJECTDIR}/main.o
+OBJECTFILES=${OBJECTDIR}/pic32.o ${OBJECTDIR}/main.o
 
 # Source Files
-SOURCEFILES=pic32.h i2c_master_noint.h i2c_master_noint.c pic32.c main.c
+SOURCEFILES=pic32.c main.c
 
 
 
@@ -107,24 +107,6 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/pic32.o: pic32.h  .generated_files/flags/default/d4ee4080cfb8aa8147b232152d63fdb0128c76c3 .generated_files/flags/default/15078ce8f5a6ad03035624f12995f439edad8cad
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/pic32.o.d 
-	@${RM} ${OBJECTDIR}/pic32.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/pic32.o.d" -o ${OBJECTDIR}/pic32.o pic32.h    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
-${OBJECTDIR}/i2c_master_noint.o: i2c_master_noint.h  .generated_files/flags/default/e490ac002715956d71e97e37f8de218353c1966c .generated_files/flags/default/15078ce8f5a6ad03035624f12995f439edad8cad
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/i2c_master_noint.o.d 
-	@${RM} ${OBJECTDIR}/i2c_master_noint.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/i2c_master_noint.o.d" -o ${OBJECTDIR}/i2c_master_noint.o i2c_master_noint.h    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
-${OBJECTDIR}/i2c_master_noint.o: i2c_master_noint.c  .generated_files/flags/default/253225e61123a7a5e21b9e3a0f646db7995c1b08 .generated_files/flags/default/15078ce8f5a6ad03035624f12995f439edad8cad
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/i2c_master_noint.o.d 
-	@${RM} ${OBJECTDIR}/i2c_master_noint.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/i2c_master_noint.o.d" -o ${OBJECTDIR}/i2c_master_noint.o i2c_master_noint.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
 ${OBJECTDIR}/pic32.o: pic32.c  .generated_files/flags/default/f075b38b9ff66f3e23f0c54053301f4c5dc0a0c7 .generated_files/flags/default/15078ce8f5a6ad03035624f12995f439edad8cad
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/pic32.o.d 
@@ -138,24 +120,6 @@ ${OBJECTDIR}/main.o: main.c  .generated_files/flags/default/7e9f0b174ddbe2e0001a
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/main.o.d" -o ${OBJECTDIR}/main.o main.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 else
-${OBJECTDIR}/pic32.o: pic32.h  .generated_files/flags/default/9a95915a44d9ee7f26b18c66e8e2ddff02849da2 .generated_files/flags/default/15078ce8f5a6ad03035624f12995f439edad8cad
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/pic32.o.d 
-	@${RM} ${OBJECTDIR}/pic32.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/pic32.o.d" -o ${OBJECTDIR}/pic32.o pic32.h    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
-${OBJECTDIR}/i2c_master_noint.o: i2c_master_noint.h  .generated_files/flags/default/cec8d276a8298023516305b895e9f1598cf8b4f8 .generated_files/flags/default/15078ce8f5a6ad03035624f12995f439edad8cad
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/i2c_master_noint.o.d 
-	@${RM} ${OBJECTDIR}/i2c_master_noint.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/i2c_master_noint.o.d" -o ${OBJECTDIR}/i2c_master_noint.o i2c_master_noint.h    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
-${OBJECTDIR}/i2c_master_noint.o: i2c_master_noint.c  .generated_files/flags/default/2aaadd48aa45773b7c2ce884f75b8ed4d48a2f93 .generated_files/flags/default/15078ce8f5a6ad03035624f12995f439edad8cad
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/i2c_master_noint.o.d 
-	@${RM} ${OBJECTDIR}/i2c_master_noint.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/i2c_master_noint.o.d" -o ${OBJECTDIR}/i2c_master_noint.o i2c_master_noint.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
 ${OBJECTDIR}/pic32.o: pic32.c  .generated_files/flags/default/7a60418bc1df2ed298210c6ec7718e015a9aa626 .generated_files/flags/default/15078ce8f5a6ad03035624f12995f439edad8cad
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/pic32.o.d 
