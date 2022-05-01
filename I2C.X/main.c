@@ -1,4 +1,4 @@
-#include "PIC32.h"
+#include "pic32.h"
 #include <stdio.h>        // standard input output library.
 #include <math.h>
 #include "i2c_master_noint.h"
@@ -26,7 +26,7 @@ int main() {
         
         //This will be the chip configuration. 
         setPin(wcaddress, 0x00, 0b01111111); //Sets IODIR to have GP7 as an output only. 
-        setPin(wcaddress, 0x0A, 0b00000000); //Sets the OLAT reg high on GP7
+        setPin(wcaddress, 0x0A, 0b10000000); //Sets the OLAT reg high on GP7
         
         
 //        //trying to blink the LED

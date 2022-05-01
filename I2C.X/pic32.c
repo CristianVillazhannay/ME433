@@ -1,4 +1,4 @@
-#include "PIC32.h"
+#include "pic32.h"
 
 
 // Device Configuration Registers
