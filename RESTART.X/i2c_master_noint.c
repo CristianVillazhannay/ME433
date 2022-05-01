@@ -3,7 +3,7 @@
 // I2C pins need pull-up resistors, 2k-10k
 #include "i2c_master_noint.h"
 
-void i2c_master_setup(void) {
+void i2c_master_setup(void) { //ASK ABOUT THIS.
     // using a large BRG to see it on the nScope, make it smaller after verifying that code works
     // look up TPGD in the datasheet
     I2C1BRG = 1000; // I2CBRG = [1/(2*Fsck) - TPGD]*Pblck - 2 (TPGD is the Pulse Gobbler Delay)

@@ -7,6 +7,7 @@
 
 void talk(void);
 void setPin(unsigned char chipadd, unsigned char registeradd, unsigned char newreg);
+void i2cblink(unsigned char addy);
 
 int main() {
     //Startup the PIC32 and the i2c module
@@ -19,59 +20,34 @@ int main() {
     unsigned char rcaddress = 0b01000001; //this includes a read bit! 
     
     //start the count
-    _CP0_SET_COUNT(0);
+
     
     while (1) {     //The loop will run infinitely 
         blink();    //This will be the heartbeat function for the PIC32
         
         //This will be the chip configuration. 
         setPin(wcaddress, 0x00, 0b01111111); //Sets IODIR to have GP7 as an output only. 
-        setPin(wcaddress, 0x0A, 0b10000000); //Sets the OLAT reg high on GP7
+        setPin(wcaddress, 0x0A, 0b00000000); //Sets the OLAT reg low on GP7
         
+      
         
-//        //trying to blink the LED
-//        int ctime; 
-//
-//        _CP0_SET_COUNT(0);
-//        ctime = _CP0_GET_COUNT();   //This will get the current count -- the core time is 32-bit timer.
-//
-//        while (ctime != 36000001 ){
-//
-//            ctime = _CP0_GET_COUNT();   //This will get the current count -- the core time is 32-bit timer.
-//
-//            if (ctime < 12000000){
-//                setPin(wcaddress, 0x0A, 0b10000000); //Sets the OLAT reg high on GP7
-//            }
-//            else if (ctime >= 12000000 && ctime < 24000000){
-//                setPin(wcaddress, 0x0A, 0b00000000); //Sets the OLAT reg high on GP7
-//            }
-//            else if (ctime >= 24000000 && ctime < 36000000){    
-//                setPin(wcaddress, 0x0A, 0b10000000); //Sets the OLAT reg high on GP7
-//            }  
-//            else if (ctime >= 36000000){
-//                setPin(wcaddress, 0x0A, 0b00000000); //Sets the OLAT reg high on GP7
-//            }
-//        }
+        unsigned char byte;
+        
+        //We need to read from GPIO. 
+        i2c_master_start();
+        i2c_master_send(wcaddress); //send the chip address. 
+        i2c_master_send(0x09); // send the register address.
+        i2c_master_restart();
+        i2c_master_send(rcaddress); // send the read chip address
+        byte = i2c_master_recv();
+        i2c_master_ack(1);
+        i2c_master_stop();
+        
+        if (byte<<7 == 0x00){
+            i2cblink(wcaddress); //blink when pressed?!
+        }
 
-//        unsigned char byte;
-//        
-//        //We need to read from GPIO. 
-//        i2c_master_start();
-//        i2c_master_send(wcaddress); //send the chip address. 
-//        i2c_master_send(0x09); // send the register address.
-//        i2c_master_restart();
-//        i2c_master_send(rcaddress); // send the read chip address
-//        byte = i2c_master_recv();
-//        i2c_master_ack(1);
-//        i2c_master_stop();
-//        
-//        if (byte<<7 == 0x80){
-//            setPin(wcaddress, 0x0A, 0b10000000); //Sets the OLAT reg high on GP7
-//        }
-//        else if (byte<<7 == 0x00){
-//            setPin(wcaddress, 0x0A, 0b00000000); //Sets the OLAT reg low on GP7
-//        }
-//        
+        
         
         
     }
@@ -102,4 +78,21 @@ void setPin(unsigned char chipadd, unsigned char registeradd, unsigned char newr
     i2c_master_send(registeradd); // send the register address.
     i2c_master_send(newreg);
     i2c_master_stop();
+}
+
+void i2cblink(unsigned char addy){
+    for (int i = 0; i <5; i++){
+        if (i%2 == 0){
+
+            setPin(addy, 0x0A, 0b10000000);
+            _CP0_SET_COUNT(0);
+            while(_CP0_GET_COUNT()<12000000){;}
+        }
+        else{
+            setPin(addy, 0x0A, 0b00000000);
+            _CP0_SET_COUNT(0);
+            while(_CP0_GET_COUNT()<12000000){;}
+
+        }
+    }
 }
