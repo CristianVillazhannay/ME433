@@ -137,7 +137,7 @@ void blink(void){
     _CP0_SET_COUNT(0);
     ctime = _CP0_GET_COUNT();   //This will get the current count -- the core time is 32-bit timer.
 
-    while (ctime != 36000001 ){
+    while (ctime < 36000001 ){
 
         ctime = _CP0_GET_COUNT();   //This will get the current count -- the core time is 32-bit timer.
 

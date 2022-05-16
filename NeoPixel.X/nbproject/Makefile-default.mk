@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=main.c pic32.c ws2812.c
+SOURCEFILES_QUOTED_IF_SPACED=main.c pic32.c ws2812.c font.c ssd1306.c i2c_master_noint.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/pic32.o ${OBJECTDIR}/ws2812.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/pic32.o.d ${OBJECTDIR}/ws2812.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/pic32.o ${OBJECTDIR}/ws2812.o ${OBJECTDIR}/font.o ${OBJECTDIR}/ssd1306.o ${OBJECTDIR}/i2c_master_noint.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/pic32.o.d ${OBJECTDIR}/ws2812.o.d ${OBJECTDIR}/font.o.d ${OBJECTDIR}/ssd1306.o.d ${OBJECTDIR}/i2c_master_noint.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/pic32.o ${OBJECTDIR}/ws2812.o
+OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/pic32.o ${OBJECTDIR}/ws2812.o ${OBJECTDIR}/font.o ${OBJECTDIR}/ssd1306.o ${OBJECTDIR}/i2c_master_noint.o
 
 # Source Files
-SOURCEFILES=main.c pic32.c ws2812.c
+SOURCEFILES=main.c pic32.c ws2812.c font.c ssd1306.c i2c_master_noint.c
 
 
 
@@ -125,6 +125,24 @@ ${OBJECTDIR}/ws2812.o: ws2812.c  .generated_files/flags/default/53ffb0a00ede510f
 	@${RM} ${OBJECTDIR}/ws2812.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -fno-common -MP -MMD -MF "${OBJECTDIR}/ws2812.o.d" -o ${OBJECTDIR}/ws2812.o ws2812.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
+${OBJECTDIR}/font.o: font.c  .generated_files/flags/default/ed336e87600fd178ea015d30ac263d3283cfb5db .generated_files/flags/default/15078ce8f5a6ad03035624f12995f439edad8cad
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/font.o.d 
+	@${RM} ${OBJECTDIR}/font.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -fno-common -MP -MMD -MF "${OBJECTDIR}/font.o.d" -o ${OBJECTDIR}/font.o font.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/ssd1306.o: ssd1306.c  .generated_files/flags/default/49e6c4695fbce9f8b488e21f5598ba2d548a08a3 .generated_files/flags/default/15078ce8f5a6ad03035624f12995f439edad8cad
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/ssd1306.o.d 
+	@${RM} ${OBJECTDIR}/ssd1306.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -fno-common -MP -MMD -MF "${OBJECTDIR}/ssd1306.o.d" -o ${OBJECTDIR}/ssd1306.o ssd1306.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/i2c_master_noint.o: i2c_master_noint.c  .generated_files/flags/default/e1a0fa930f5935bbdcdc24b8d5f44266f9959f2a .generated_files/flags/default/15078ce8f5a6ad03035624f12995f439edad8cad
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/i2c_master_noint.o.d 
+	@${RM} ${OBJECTDIR}/i2c_master_noint.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -fno-common -MP -MMD -MF "${OBJECTDIR}/i2c_master_noint.o.d" -o ${OBJECTDIR}/i2c_master_noint.o i2c_master_noint.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
 else
 ${OBJECTDIR}/main.o: main.c  .generated_files/flags/default/6e68b0ab8f1d197e0ef8ecbda93029bc4aff7f5b .generated_files/flags/default/15078ce8f5a6ad03035624f12995f439edad8cad
 	@${MKDIR} "${OBJECTDIR}" 
@@ -143,6 +161,24 @@ ${OBJECTDIR}/ws2812.o: ws2812.c  .generated_files/flags/default/935ac67928a3155d
 	@${RM} ${OBJECTDIR}/ws2812.o.d 
 	@${RM} ${OBJECTDIR}/ws2812.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -fno-common -MP -MMD -MF "${OBJECTDIR}/ws2812.o.d" -o ${OBJECTDIR}/ws2812.o ws2812.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/font.o: font.c  .generated_files/flags/default/925d4abb5a5e5f50422e62a80c43b5a26a5485ac .generated_files/flags/default/15078ce8f5a6ad03035624f12995f439edad8cad
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/font.o.d 
+	@${RM} ${OBJECTDIR}/font.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -fno-common -MP -MMD -MF "${OBJECTDIR}/font.o.d" -o ${OBJECTDIR}/font.o font.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/ssd1306.o: ssd1306.c  .generated_files/flags/default/6eb919306503ac3d663f8a10e46865ce0d532ea6 .generated_files/flags/default/15078ce8f5a6ad03035624f12995f439edad8cad
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/ssd1306.o.d 
+	@${RM} ${OBJECTDIR}/ssd1306.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -fno-common -MP -MMD -MF "${OBJECTDIR}/ssd1306.o.d" -o ${OBJECTDIR}/ssd1306.o ssd1306.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/i2c_master_noint.o: i2c_master_noint.c  .generated_files/flags/default/da6fe7fcf7c4169b9ef173dd9f8fd1d184369a10 .generated_files/flags/default/15078ce8f5a6ad03035624f12995f439edad8cad
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/i2c_master_noint.o.d 
+	@${RM} ${OBJECTDIR}/i2c_master_noint.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -O1 -fno-common -MP -MMD -MF "${OBJECTDIR}/i2c_master_noint.o.d" -o ${OBJECTDIR}/i2c_master_noint.o i2c_master_noint.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 endif
 
