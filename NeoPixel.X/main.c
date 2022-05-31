@@ -26,8 +26,8 @@ int main() {
     //Startup the PIC32 and the ws2812 model. 
     PIC32_Startup();
     ws2812b_setup();
-    //Here we will set the array values for the wsColor.
     
+    //Here we will initialize the array values for the wsColor.
     wsColor colors[5];
    
     int hue = 0;
@@ -36,7 +36,6 @@ int main() {
     int hue4 = 90;
     int hue5 = 120;
     
-    int i=0; 
    
     _CP0_SET_COUNT(0);
     signed int ctime = _CP0_GET_COUNT();
@@ -45,25 +44,36 @@ int main() {
         
 //        blink();    //This will be the heartbeat function for the PIC32
         
+        //Some delay function -- startup for the Neopixel? 
         ctime =_CP0_GET_COUNT();
-        while( _CP0_GET_COUNT() < (ctime+5000000)){;}
-            
-        colors[i] = HSBtoRGB(hue, 1, 0.25);
-        hue = hue + 30;
+        while( _CP0_GET_COUNT() < (ctime+10000000)){;}
         
-
+        //Creating the color matrix. 
+        colors[0] = HSBtoRGB(hue, 1, 0.25);
+        colors[1] = HSBtoRGB(hue2, 1, 0.25);
+        colors[2] = HSBtoRGB(hue3, 1, 0.25);
+        colors[3] = HSBtoRGB(hue4, 1, 0.25);
+        colors[4] = HSBtoRGB(hue5, 1, 0.25);
+        
+        
+        //Makes it so that it bounces between the current values that it already has.
+        hue5 = hue4;
+        hue4 = hue3;
+        hue3 = hue2;
+        hue2 = hue;
+        hue = hue +30; 
+        
+        //Make sure the color never leaves the color wheel spectrum.
+        //It's all based on hue so only one check is needed? 
         if (hue > 360){
             hue = hue%360;
         }
-        //set color
+
+        
+        //set color - This sets all the color at the same time.
         
         ws2812b_setColor(colors,5);
-        i++;
         
-        if (i>4){
-            i=0;
-            
-        }
         
         //This will set the colors at the end. 
         
